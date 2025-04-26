@@ -22,7 +22,7 @@
 - name: downloading and extracting frontend code
   ansible.builtin.unarchive:
     src: "https://expense-builds.s3.us-east-1.amazonaws.com/expense-{{ component }}-v2.zip"
-    dest: /usr/share/nginx/html
+    dest: "{{ app_location }}"
     remote_src: yes
 
 - name: copying expense configuration file
