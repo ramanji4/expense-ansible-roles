@@ -9,21 +9,10 @@
     state: restarted
     enabled: yes
 
-- name: removing default nginx content
-  ansible.builtin.file:
-    path: "{{ app_location }}"
-    state: absent
-
-- name: creating directory
-  ansible.builtin.file:
-    path: "{{ app_location }}"
-    state: directory
-  
-- name: downloading and extracting frontend code
-  ansible.builtin.unarchive:
-    src: "https://expense-builds.s3.us-east-1.amazonaws.com/expense-{{ component }}-v2.zip"
-    dest: "{{ app_location }}"
-    remote_src: yes
+- name: Running common tasks by importing roles
+  ansible.builtin.import_role:
+    name: common-tasks
+    tasks_from: app-pre-req
 
 - name: copying expense configuration file
   ansible.builtin.template:
