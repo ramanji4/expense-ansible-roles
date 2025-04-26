@@ -1,0 +1,32 @@
+- name: installing nginx
+  ansible.builtin.package:
+    name: nginx
+    state: present
+  
+- name: starting nginx
+  ansible.builtin.service:
+    name: nginx
+    state: restarted
+    enabled: yes
+
+- name: removing default nginx content
+  ansible.builtin.file:
+    path: "{{ app_location }}"
+    state: absent
+
+- name: creating directory
+  ansible.builtin.file:
+    path: "{{ app_location }}"
+    state: directory
+  
+- name: downloading and extracting frontend code
+  ansible.builtin.unarchive:
+  src: "https://expense-builds.s3.us-east-1.amazonaws.com/expense-{{ component }}-v2.zip"
+  dest: /usr/share/nginx/html
+
+- name: copying expense configuration file
+  ansible.builtin.template:
+    src: expense.conf
+    dest: /etc/nginx/default.d/expense.conf
+    notify:
+    - Restart nginx
