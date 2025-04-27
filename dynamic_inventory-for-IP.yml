@@ -1,11 +1,10 @@
-- name: querying private IP's of instances as a dynamic inventory
-  plugin: amazon.aws.aws_ec2
-  regions:
-    - us-east-1
-  filters:
-    tag:Name: nginx
-    instance-state-name: running
-  hostnames:
-    - private-ip-address
-  compose:
-    ansible_host: private_ip_address
+plugin: amazon.aws.aws_ec2
+regions:
+  - us-east-1
+filters:
+  tag:Name: nginx
+  instance-state-name: running
+hostnames:
+  - private-ip-address
+compose:
+  ansible_host: private_ip_address
