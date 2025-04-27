@@ -2,6 +2,6 @@
   hosts: mysql
   become: yes
   vars_files:
-  - var/expense/credentials.yml   #this is the ansible vault file which contains credentials of expense project's DB's password
+  - /var/expense/credentials.yml   #this is the ansible vault file which contains credentials of expense project's DB's password
   roles:
   - mysql
