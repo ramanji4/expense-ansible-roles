@@ -25,7 +25,7 @@
 
 - name: running common tasks by importing roles
   ansible.builtin.import_role:
-    name: common_tasks
+    name: common
     tasks_from: app-pre-req
 
 - name: installing dependencies
