@@ -4,7 +4,7 @@ plugin: amazon.aws.aws_ec2   #this is the dynamic inventory file, which can quer
 regions:
 - us-east-1
 filters:
-  tag:name: nginx
+  tag:Name: nginx
   instance-state-name: running
 hostnames:
 - private-ip-address
