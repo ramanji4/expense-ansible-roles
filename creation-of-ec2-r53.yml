@@ -3,5 +3,3 @@
   connection: local
   roles:
   - ec2-and-r53
-  
-
