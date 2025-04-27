@@ -1,4 +1,4 @@
-- name: removing default content
+- name: removing existing content
   ansible.builtin.file:
     path: "{{ app_location }}"
     state: absent
