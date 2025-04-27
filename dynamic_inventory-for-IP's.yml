@@ -1,4 +1,5 @@
-plugin: amazon.aws.aws_ec2   #this is the dynamic inventory file, which can query IP's of instances dynamically by connecting to AWS
+plugin: amazon.aws.aws_ec2   
+#this is the dynamic inventory file, which can query IP's of instances dynamically by connecting to AWS
 # aws_access_key: 
 # aws_secret_key:  by these 2 modules we can able to connetcg AWS system 
 regions:
@@ -9,4 +10,19 @@ filters:
 hostnames:
 - private-ip-address
 compose:
+  ansible_host: private_ip_address
+
+
+
+
+plugin: amazon.aws.aws_ec2
+regions:
+- us-east-1
+filters:
+  tag:Name: nginx
+  instance-state-name : running
+hostnames:
+  - private-ip-address
+compose:
+  # This sets the `ansible_host` variable to connect with the private IP address without changing the hostname.
   ansible_host: private_ip_address
