@@ -11,7 +11,7 @@
 
 - name: Running common tasks by importing roles
   ansible.builtin.import_role:
-    name: common-tasks
+    name: common
     tasks_from: app-pre-req
 
 - name: copying expense configuration file
